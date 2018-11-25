@@ -1,0 +1,6 @@
+framework module Pods_TrashorNot {
+  umbrella header "Pods-TrashorNot-umbrella.h"
+
+  export *
+  module * { export * }
+}

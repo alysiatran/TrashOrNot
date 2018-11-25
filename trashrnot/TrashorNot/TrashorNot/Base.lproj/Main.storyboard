@@ -14,33 +14,62 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TrashorNot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fpm-Cw-DKM">
-                                <rect key="frame" x="0.0" y="614" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Camera" id="L7Y-Hx-k8p">
-                                        <connections>
-                                            <action selector="Camerabutton:" destination="BYZ-38-t0r" id="dkH-5q-Uxn"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jll-TY-Ha9"/>
-                                    <barButtonItem title="Library " id="tzb-O8-stC">
-                                        <connections>
-                                            <action selector="Librarybutton:" destination="BYZ-38-t0r" id="cLy-e2-1WY"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="DYc-ah-95c">
+                                <rect key="frame" x="54" y="41" width="267" height="545"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5V-DV-qUN">
+                                        <rect key="frame" x="112.5" y="0.0" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lCD-Fe-o8x">
+                                        <rect key="frame" x="0.0" y="54.5" width="267" height="436.5"/>
+                                    </imageView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="huZ-kF-lEH">
+                                        <rect key="frame" x="123.5" y="525" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="sPP-rE-gJJ"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="lCD-Fe-o8x" firstAttribute="leading" secondItem="DYc-ah-95c" secondAttribute="leading" id="VOt-J5-hMQ"/>
+                                    <constraint firstItem="huZ-kF-lEH" firstAttribute="top" secondItem="lCD-Fe-o8x" secondAttribute="bottom" constant="34" id="wr6-pq-gDs"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zh-oG-Rko">
+                                <rect key="frame" x="164" y="542" width="47" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="99j-dL-khx"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="cameraButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3iK-hS-ZWD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DYc-ah-95c" firstAttribute="centerX" secondItem="4Zh-oG-Rko" secondAttribute="centerX" id="63f-yc-QWM"/>
+                            <constraint firstItem="4Zh-oG-Rko" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="522" id="Bne-m0-8cg"/>
+                            <constraint firstItem="4Zh-oG-Rko" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="164" id="Dqe-uj-zec"/>
+                            <constraint firstItem="DYc-ah-95c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="54" id="d57-Yo-XHG"/>
+                            <constraint firstItem="DYc-ah-95c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="21" id="jpD-bE-AF4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="huZ-kF-lEH" id="5so-2e-nBW"/>
+                        <outlet property="imageView" destination="lCD-Fe-o8x" id="1rT-KV-sid"/>
+                        <outlet property="resultLabel" destination="8bC-Xf-vdC" id="0mW-3L-vQx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
